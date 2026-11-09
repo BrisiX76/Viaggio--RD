@@ -1060,7 +1060,10 @@ const store = { get(k, d) { try { const v = localStorage.getItem(k); return v ==
 const WHEEL_COLORS = ["#002d62", "#ce1126", "#0a9396", "#e59a00", "#2b8a3e", "#3a5bbf", "#e76f51", "#6d5bd0"];
 let wheelState = { rot: 0, spinning: false, pool: null, history: [] };
 function renderRuota() {
-  const names = store.get("rd-names", Array.from({ length: 16 }, (_, i) => `Persona ${i + 1}`));
+  // Group names (edit here). Devices that still hold the old placeholders get the new list.
+  const NOMI_GRUPPO = ["Gigio", "Marta", "Amy", "Carlo", "Caro", "Ele", "Elisabetta", "Fabio", "Fla", "Ko", "Lia", "Lorenzo", "Maria Laura", "Massimiliano", "Nicola"];
+  let names = store.get("rd-names", NOMI_GRUPPO);
+  if (names.every(n => /^Persona \d+$/.test(n))) names = NOMI_GRUPPO;
   const mode = store.get("rd-mode", "ruota");
   sheet.innerHTML = `<div class="dayhead"><span class="when">Per il gruppo</span><h2>Sorteggi</h2><p>Ruota della fortuna, camere e posti in pulmino, tutti a estrazione casuale. I nomi restano salvati solo su questo telefono; il risultato si copia e si incolla nella chat del gruppo.</p></div>
     <div class="infobox"><h3>Partecipanti</h3><label for="names" class="note">Un nome per riga (${names.length} inseriti).</label>
