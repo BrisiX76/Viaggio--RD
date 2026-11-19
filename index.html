@@ -1067,10 +1067,11 @@ const WHEEL_COLORS = ["#002d62", "#ce1126", "#0a9396", "#e59a00", "#2b8a3e", "#3
 let wheelState = { rot: 0, spinning: false, pool: null, history: [] };
 function renderRuota() {
   // Group names (edit here). Devices that still hold the old placeholders get the new list.
-  const NOMI_GRUPPO = ["Gigio", "Marta", "Amina", "Carlo", "Ele", "Elisabetta", "Fabio", "Flavia", "Kosetta", "Lia", "Lorenzo", "Maria Laura", "Massimiliano", "Nicola"];
+  const NOMI_GRUPPO = ["Gigio", "Marta", "Alessia", "Amina", "Carlo", "Ele", "Elisabetta", "Fabio", "Flavia", "Kosetta", "Lia", "Lorenzo", "Maria Laura", "Massimiliano", "Nicola"];
   // previous built-in lists: devices still holding one of these get the current list
   const OLD_DEFAULTS = ["Gigio|Marta|Amy|Carlo|Caro|Ele|Elisabetta|Fabio|Fla|Ko|Lia|Lorenzo|Maria Laura|Massimiliano|Nicola",
-    "Gigio|Marta|Amina|Carlo|Caro|Ele|Elisabetta|Fabio|Flavia|Kosetta|Lia|Lorenzo|Maria Laura|Massimiliano|Nicola"];
+    "Gigio|Marta|Amina|Carlo|Caro|Ele|Elisabetta|Fabio|Flavia|Kosetta|Lia|Lorenzo|Maria Laura|Massimiliano|Nicola",
+    "Gigio|Marta|Amina|Carlo|Ele|Elisabetta|Fabio|Flavia|Kosetta|Lia|Lorenzo|Maria Laura|Massimiliano|Nicola"];
   let names = store.get("rd-names", NOMI_GRUPPO);
   if (names.every(n => /^Persona \d+$/.test(n)) || OLD_DEFAULTS.includes(names.join("|"))) names = NOMI_GRUPPO;
   const mode = store.get("rd-mode", "ruota");
